@@ -1,21 +1,11 @@
 const { Client, Intents } = require('discord.js')
 const commandHandler = require('./src/commands')
 require('dotenv').config()
-// import { getVideoDurationInSeconds } from 'get-video-duration'
 
-// const youtubeMp3Converter = require("youtube-mp3-converter");
-// const convertLinkToMp3 = youtubeMp3Converter(
-//   path.join(__dirname, "temp", "mp3")
-// );
-// const downloadPath = path.join(__dirname, 'temp', 'mp3')
-//
-// const Downloader = require('./libs/downloader')
-// const dl = new Downloader()
-//
 const intents = new Intents()
 intents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS)
+
 const client = new Client({ intents })
-console.log(process.env.BOT_TOKEN)
 client
   .login(process.env.BOT_TOKEN)
   .then(() => console.log('Bot is connected!'))
