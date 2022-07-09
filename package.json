@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "My discord bot. The main purpose is ability to download music from different sources for free",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
@@ -15,22 +16,18 @@
     "download",
     "youtube_to_mp3"
   ],
-  "author": "FantomVD",
+  "author": "FantomVD/VladBar",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.3",
-    "fluent-ffmpeg": "^2.1.2",
-    "get-video-duration": "^4.0.0",
-    "node-fetch": "^2.6.1",
-    "youtube-mp3-converter": "^1.0.3",
-    "youtube-mp3-downloader": "^0.7.7"
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
+    "discord-api-types": "^0.36.1",
+    "discord.js": "13.8.1",
+    "dotenv": "16.0.1"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
-    "install": "^0.13.0",
-    "nodemon": "^2.0.12",
-    "npm": "^7.20.0",
     "prettier": "^2.7.1",
     "prettier-eslint": "^12.0.0"
   }

@@ -1,20 +1,32 @@
-const { PREFIX } = require('../constants')
+const commandHandler = async (interaction) => {
+  if (!interaction.isCommand()) return
 
-const commandHandler = (message) => {
-  if (message.author.bot || !message.content.startsWith(PREFIX)) {
-    return
+  const { commandName } = interaction
+  if (commandName === 'ping') {
+    interaction.reply('pong')
   }
 
-  const commandBody = message.content.slice(PREFIX.length)
-  const args = commandBody.split(' ')
-  const command = args.shift().toLowerCase()
-
-  switch (command) {
+  switch (commandName) {
     case 'ping':
-      message.reply('Pong')
+      interaction.reply('Pong')
       break
+    case 'roma': {
+      const replies = ['-_-', '🌚', 'summon <@524185471375638528>']
+      const randomMessageIndex = Math.floor(Math.random() * replies.length)
+      interaction.reply(replies[randomMessageIndex])
+      break
+    }
+    case 'ping-random': {
+      // const members = [...interaction.guild.members._cache].map(([id]) => id)
+      const members = await interaction.guild.members
+        .fetch()
+        .then((members) => [...members].map(([id]) => id))
+      const randomMessageIndex = Math.floor(Math.random() * members.length)
+      await interaction.reply(`<@${members[randomMessageIndex]}>`)
+      break
+    }
     default:
-      message.reply('Command not found! 🌚')
+      interaction.reply('Command not found! 🌚')
   }
   //   if (command === 'download') {
   //     const videoDuration = await getVideoDurationInSeconds(
