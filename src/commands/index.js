@@ -28,6 +28,8 @@ const commandHandler = async (interaction) => {
 
     case 'download':
       return require('../commands/download')(interaction)
+    case 'play':
+      return require('../commands/play')(interaction)
     default:
       interaction.reply('Command not found! 🌚')
   }

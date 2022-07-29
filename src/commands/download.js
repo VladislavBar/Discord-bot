@@ -1,19 +1,16 @@
 const { MessageAttachment } = require('discord.js')
 const fs = require('fs')
-
-const Downloader = require('../libs/Downloader')
-const getYoutubeVideoId = require('../utils/getYoutubeVideoId')
+const downloadYoutubeVideo = require('../utils/downloadYoutubeVideo')
 
 const download = async (interaction) => {
-  await interaction.deferReply('Downloading...')
+  await interaction.deferReply({ content: 'Downloading...', ephemeral: true })
   const videoUrl = interaction.options.getString('url')
-  const videoId = getYoutubeVideoId(videoUrl)
 
   let downloadedFile
   try {
-    downloadedFile = await Downloader.download(videoId)
+    downloadedFile = await downloadYoutubeVideo(videoUrl)
     const fileAttachment = new MessageAttachment(downloadedFile.file)
-    return await interaction.editReply({ files: [fileAttachment] })
+    return await interaction.editReply({ files: [fileAttachment], ephemeral: true })
   } catch (e) {
     console.log(e)
   } finally {

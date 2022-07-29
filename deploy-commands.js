@@ -8,6 +8,12 @@ const commands = [
   new SlashCommandBuilder().setName('roma').setDescription('Just a secret!'),
   new SlashCommandBuilder().setName('ping-random').setDescription('Ping random server user!'),
   new SlashCommandBuilder()
+    .setName('play')
+    .setDescription('Play a song!')
+    .addStringOption((option) =>
+      option.setName('song').setRequired(true).setDescription('The song to play!')
+    ),
+  new SlashCommandBuilder()
     .setName('download')
     .setDescription('Download video as MP3!')
     .addStringOption((option) =>

@@ -3,7 +3,7 @@ const commandHandler = require('./src/commands')
 require('dotenv').config()
 
 const intents = new Intents()
-intents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS)
+intents.add(Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_VOICE_STATES)
 
 const client = new Client({ intents })
 client
